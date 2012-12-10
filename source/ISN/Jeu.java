@@ -26,10 +26,10 @@ public class Jeu {
 				//informations relatives à l'événement (touche du clavier, bouton de souris, position du clic).
 				
 				if(event.type == Event.Type.CLOSED) {
-		            //L'utilisateur a décidé de fermer le jeu.
-		            fenetre.close();
+		            		//L'utilisateur a décidé de fermer le jeu.
+		            		fenetre.close();
 		            
-		        }
+		        	}
 			}
 			
 			fenetre.clear();
