@@ -7,6 +7,9 @@ import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
 
 public class Jeu {
+	
+	//Mettre ici toutes les variables qui doivent être conservée tout au long de l'exécution
+	//du jeu (ex : position des perso, vitesse balle...)
 
 	public static void main(String[] args) {
 		
@@ -37,8 +40,19 @@ public class Jeu {
 			//Boucle infinie pour gérer le jeu
 			Time dureeFrame = clock.restart();
 			
+			gererJeu(dureeFrame.asSeconds());
+			afficherJeu(fenetre);
+			
 			fenetre.display();
 		}
+	}
+	
+	public static void gererJeu(float dureeFrame){
+		//Ici, on gérera le jeu (mouvements des persos, menu, collisions...)
+	}
+	
+	public static void afficherJeu(RenderWindow fenetre){
+		//Ici, on gérera l'affichage du jeu (dessin des persos...)
 	}
 
 }
