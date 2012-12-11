@@ -32,7 +32,7 @@ public class Jeu {
 		            		//L'utilisateur a décidé de fermer le jeu.
 		            		fenetre.close();
 		            
-		        	}
+				}
 			}
 			
 			fenetre.clear();
