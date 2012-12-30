@@ -27,11 +27,11 @@ public class Jeu {
 		Texture maTexture = new Texture();
 		try {
 			//Essai de chargement de la texture
-			maTexture.loadFromFile(new File("IMAGE/boite_dragees_lila_bk_boitedrageeslila13.jpg"));
-			} catch(IOException ex) {
+			maTexture.loadFromFile(new File("IMAGE/2DWoodBox.jpg"));
+		} catch(IOException ex) {
 			//Cette partie s'exécute si un problème a eu lieu pendant le chargement de l'image
 			ex.printStackTrace();
-			}
+		}
 		Sprite monSprite = new Sprite();
 		monSprite.setTexture(maTexture);
 		
@@ -62,6 +62,7 @@ public class Jeu {
 			
 			fenetre.draw(monSprite);
 			monSprite.setPosition(200, 100);
+			monSprite.setRotation(monSprite.getRotation() + 50 * dureeFrame.asSeconds());
 			
 			fenetre.display();
 			
