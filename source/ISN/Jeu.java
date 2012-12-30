@@ -1,5 +1,8 @@
 package ISN;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.jsfml.graphics.*;
 import org.jsfml.system.Clock;
 import org.jsfml.system.Time;
@@ -20,6 +23,17 @@ public class Jeu {
 		fenetre.create(new VideoMode(1024, 768, 32), "Jeu ISN");
 		
 		Clock clock = new Clock();
+		
+		Texture maTexture = new Texture();
+		try {
+			//Essai de chargement de la texture
+			maTexture.loadFromFile(new File("IMAGE/boite_dragees_lila_bk_boitedrageeslila13.jpg"));
+			} catch(IOException ex) {
+			//Cette partie s'exécute si un problème a eu lieu pendant le chargement de l'image
+			ex.printStackTrace();
+			}
+		Sprite monSprite = new Sprite();
+		monSprite.setTexture(maTexture);
 		
 		while(fenetre.isOpen()){
 			
@@ -45,6 +59,9 @@ public class Jeu {
 			
 			gererJeu(dureeFrame.asSeconds());
 			afficherJeu(fenetre);
+			
+			fenetre.draw(monSprite);
+			monSprite.setPosition(200, 100);
 			
 			fenetre.display();
 			
