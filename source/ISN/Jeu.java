@@ -3,6 +3,9 @@ package ISN;
 import org.jsfml.graphics.*;
 import org.jsfml.system.Clock;
 import org.jsfml.system.Time;
+import org.jsfml.system.Vector2f;
+import org.jsfml.window.Mouse;
+import org.jsfml.window.Keyboard;
 import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
 
@@ -44,6 +47,7 @@ public class Jeu {
 			afficherJeu(fenetre);
 			
 			fenetre.display();
+			
 		}
 	}
 	
