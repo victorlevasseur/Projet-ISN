@@ -16,6 +16,18 @@ public class Jeu {
 	
 	//Mettre ici toutes les variables qui doivent être conservée tout au long de l'exécution
 	//du jeu (ex : position des perso, vitesse balle...)
+	Sprite[] personnages;
+	float rPerso;
+	
+	Sprite balle;
+	float rBalle;
+	
+	Sprite filet;
+	
+	float vitesseX;
+	float vitesseY;
+	
+	float g;
 
 	public static void main(String[] args) {
 		
@@ -24,16 +36,7 @@ public class Jeu {
 		
 		Clock clock = new Clock();
 		
-		Texture maTexture = new Texture();
-		try {
-			//Essai de chargement de la texture
-			maTexture.loadFromFile(new File("IMAGE/2DWoodBox.jpg"));
-		} catch(IOException ex) {
-			//Cette partie s'exécute si un problème a eu lieu pendant le chargement de l'image
-			ex.printStackTrace();
-		}
-		Sprite monSprite = new Sprite();
-		monSprite.setTexture(maTexture);
+		initialisation();
 		
 		while(fenetre.isOpen()){
 			
@@ -60,13 +63,22 @@ public class Jeu {
 			gererJeu(dureeFrame.asSeconds());
 			afficherJeu(fenetre);
 			
-			fenetre.draw(monSprite);
-			monSprite.setPosition(200, 100);
-			monSprite.setRotation(monSprite.getRotation() + 50 * dureeFrame.asSeconds());
-			
 			fenetre.display();
 			
 		}
+	}
+	
+	public static void initialisation()
+	{
+		personnages = new Sprite[2];
+		filet = new Sprite();
+		balle = new Sprite();
+		
+		rPerso = 40;
+		rBalle = 7;
+		
+		vitesseX = 0;
+		vitesseY = 0;
 	}
 	
 	public static void gererJeu(float dureeFrame){
