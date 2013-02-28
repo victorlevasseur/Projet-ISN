@@ -76,7 +76,7 @@ public class Jeu {
 		rPerso = 40;
 		rBalle = 7;
 		
-		g = 500;
+		g = 400;
 		vitesseX = 0;
 		vitesseY = 0;
 		dejaCollision = new boolean[2];
