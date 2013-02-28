@@ -28,6 +28,9 @@ public class Jeu {
 	public static float vitesseY;
 	
 	public static float g;
+	
+	public static Texture texturePerso1;
+	public static Texture texturePerso2;
 
 	public static void main(String[] args) {
 		
@@ -71,6 +74,15 @@ public class Jeu {
 	public static void initialisation()
 	{
 		personnages = new Sprite[2];
+		personnages[0] = new Sprite();
+		personnages[1] = new Sprite();
+		
+		personnages[0].setOrigin(40, 40);
+		personnages[1].setOrigin(40, 40);
+		
+		personnages[0].setPosition(256, 763);
+		personnages[1].setPosition(256 + 512, 763);
+		
 		filet = new Sprite();
 		balle = new Sprite();
 		
@@ -79,6 +91,24 @@ public class Jeu {
 		
 		vitesseX = 0;
 		vitesseY = 0;
+		
+		texturePerso1 = new Texture();
+		texturePerso2 = new Texture();
+		
+		try {
+			texturePerso1.loadFromFile(new File("IMAGE/persoJ1.png")); 
+		} catch(IOException ex) { 
+			
+		}
+		
+		try {
+			texturePerso2.loadFromFile(new File("IMAGE/persoJ2.png")); 
+		} catch(IOException ex) { 
+			
+		}
+		
+		personnages[0].setTexture(texturePerso1);
+		personnages[1].setTexture(texturePerso2);
 	}
 	
 	public static void gererJeu(float dureeFrame){
@@ -88,6 +118,9 @@ public class Jeu {
 	public static void afficherJeu(RenderWindow fenetre){
 		//Ici, on gérera l'affichage du jeu (dessin des persos...)
 		AffichageTerrain.afficherterrain(fenetre);
+		
+		fenetre.draw(personnages[0]);
+		fenetre.draw(personnages[1]);
 	}
 
 }
