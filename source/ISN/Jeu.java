@@ -113,6 +113,7 @@ public class Jeu {
 	
 	public static void gererJeu(float dureeFrame){
 		//Ici, on gérera le jeu (mouvements des persos, menu, collisions...)
+		
 	}
 	
 	public static void afficherJeu(RenderWindow fenetre){
