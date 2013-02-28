@@ -10,7 +10,6 @@ public class Mouvements {
 			//move permet de bouger l'objet par rapport à sa position actuelle.
 			//Une vitesse de 150 px/s est idéale ! :)
 			Jeu.personnages[0].move(-140*dureeFrame, 0);
-		}
-			
+		}			
 	}
 }
