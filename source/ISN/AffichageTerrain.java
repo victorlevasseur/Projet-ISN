@@ -15,7 +15,7 @@ public class AffichageTerrain {
 		RectangleShape filet = new RectangleShape();
 		filet.setSize(new Vector2f(4, 485));
 		filet.setFillColor(new Color(255, 255, 255, 255));
-		filet.setPosition(510, 598);
+		filet.setPosition(510, 638);
 		fenetre.draw(filet);
 	}
 }
