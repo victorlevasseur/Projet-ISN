@@ -16,18 +16,18 @@ public class Jeu {
 	
 	//Mettre ici toutes les variables qui doivent être conservée tout au long de l'exécution
 	//du jeu (ex : position des perso, vitesse balle...)
-	Sprite[] personnages;
-	float rPerso;
+	public static Sprite[] personnages;
+	public static float rPerso;
 	
-	Sprite balle;
-	float rBalle;
+	public static Sprite balle;
+	public static float rBalle;
 	
-	Sprite filet;
+	public static Sprite filet;
 	
-	float vitesseX;
-	float vitesseY;
+	public static float vitesseX;
+	public static float vitesseY;
 	
-	float g;
+	public static float g;
 
 	public static void main(String[] args) {
 		
