@@ -87,7 +87,7 @@ public class Jeu {
 	
 	public static void afficherJeu(RenderWindow fenetre){
 		//Ici, on gérera l'affichage du jeu (dessin des persos...)
-		AffichageTerrain.afficherterrain();
+		AffichageTerrain.afficherterrain(fenetre);
 	}
 
 }
