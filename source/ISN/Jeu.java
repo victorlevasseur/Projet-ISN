@@ -112,6 +112,7 @@ public class Jeu {
 	}
 	
 	public static void gererJeu(float dureeFrame){
+		Mouvements.deplacements(dureeFrame);
 		//Ici, on gérera le jeu (mouvements des persos, menu, collisions...)
 		
 	}
