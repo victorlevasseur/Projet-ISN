@@ -11,11 +11,13 @@ public class AffichageTerrain {
 		monRectangle.setSize(new Vector2f(1024, 5));
 		monRectangle.setFillColor(new Color(255, 255, 255, 255));
 		monRectangle.setPosition(0, 763);
-		fenetre.draw(monRectangle);
+		
 		RectangleShape filet = new RectangleShape();
-		filet.setSize(new Vector2f(4, 485));
+		filet.setSize(new Vector2f(10, 485));
 		filet.setFillColor(new Color(255, 255, 255, 255));
-		filet.setPosition(510, 638);
+		filet.setPosition(507, 638);
+		
+		fenetre.draw(monRectangle);
 		fenetre.draw(filet);
 	}
 }

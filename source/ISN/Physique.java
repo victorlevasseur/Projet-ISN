@@ -1,8 +1,6 @@
 package ISN;
 
-import org.jsfml.system.*;
-import org.jsfml.graphics.*;
-import java.lang.*;
+import org.jsfml.system.Vector2f;
 
 public class Physique {
 	
@@ -16,7 +14,27 @@ public class Physique {
 		//Collision sur les bords gauche et droit
 		if((positionBalle.x - Jeu.rBalle < 0) || (positionBalle.x + Jeu.rBalle > 1024))
 		{
+			System.out.println("Collision avec les bords");
 			Jeu.vitesseX = -Jeu.vitesseX;
+		}
+		
+		//Collision sur le filet
+		if((positionBalle.x + Jeu.rBalle > 507) && 
+		   (positionBalle.x - Jeu.rBalle < 507 + 10) && 
+		   (positionBalle.y + Jeu.rBalle > 638))
+		{
+			System.out.println("Collision avec le filet");
+			
+			if(positionBalle.y < 638)
+			{
+				//La balle tape au-dessus
+				Jeu.vitesseY = -Jeu.vitesseY;
+			}
+			else
+			{
+				//La balle tape sur les côtés
+				Jeu.vitesseX = -Jeu.vitesseX;
+			}
 		}
 		
 		//Collisions sur les personnages
@@ -31,12 +49,13 @@ public class Physique {
 				//Si la balle a déjà été en contact avec le personnage à la frame
 				//précédante, on ne réapplique pas la force
 				if(!Jeu.dejaCollision[j])
-				{					
+				{		
+					System.out.println("Collision avec le joueur " + (j + 1));
 					double angleDeCollision = angleDeCollision(positionPerso, positionBalle);
 					double angleIncident = angleIncident(Jeu.vitesseX, Jeu.vitesseY);
 					
 					double norme = Math.sqrt(Math.pow(Jeu.vitesseX, 2) + Math.pow(Jeu.vitesseY, 2));
-					double angleDeRenvoi = (angleDeCollision) - (angleIncident - Math.PI / 2);;
+					double angleDeRenvoi = (angleDeCollision)/* + (angleDeCollision - angleIncident)*/;
 					
 					Jeu.vitesseX = (float) (norme * Math.cos(angleDeRenvoi));
 					Jeu.vitesseY = (float) (-norme * Math.sin(angleDeRenvoi));
