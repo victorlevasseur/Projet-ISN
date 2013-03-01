@@ -16,6 +16,13 @@ public class Jeu {
 	
 	//Mettre ici toutes les variables qui doivent être conservée tout au long de l'exécution
 	//du jeu (ex : position des perso, vitesse balle...)
+	// -> Il faut mettre public static devant pour qu'elles soient globales
+	//		ex : public static Texture texturePerso1;
+	// -> Il ne faut pas oublier de les initialiser dans la fonction initialisation()
+	//		ex : texturePerso1 = new Texture(); //dans la fonction initialisation()
+	// -> Pour y accéder depuis un autre fichier, il faut les préfixer de "Jeu."
+	//		ex : Jeu.rPerso
+	
 	public static Sprite[] personnages;
 	public static float rPerso;
 	
