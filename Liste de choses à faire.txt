@@ -1,0 +1,11 @@
+Liste de choses à faire
+=======================
+
+	- Affichage des personnages et de la balle [Fait]
+	- Déplacement des personnages [Fait]
+	- Affichage du filet et du sol [Fait]
+	- Physique de la balle [Fait]
+	- Système de score
+	- Remettre une balle en jeu après le point précédent
+	- Son
+	- Arrière-plan
