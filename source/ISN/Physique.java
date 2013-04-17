@@ -68,6 +68,22 @@ public class Physique {
 			}
 		}
 		
+		if(Jeu.balle.getPosition().y > 763)
+		{
+			Jeu.vitesseX = Jeu.vitesseY = 0;
+			
+			if(Jeu.balle.getPosition().x < 512)
+			{
+				Scores.AjouterUnPoint(1);
+				Mouvements.LancerNouveauPoint(1);
+			}
+			else
+			{
+				Scores.AjouterUnPoint(0);
+				Mouvements.LancerNouveauPoint(0);
+			}
+		}
+		
 		//Déplacement de la balle
 		Jeu.balle.move(Jeu.vitesseX * dureeFrame, Jeu.vitesseY * dureeFrame);
 	}

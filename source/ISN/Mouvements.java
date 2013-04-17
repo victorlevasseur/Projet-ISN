@@ -23,4 +23,19 @@ public class Mouvements {
 			Jeu.personnages[1].move(+200*dureeFrame, 0);
 		}			
 	}
+	
+	public static void LancerNouveauPoint(int NumeroJoueur)
+	{
+		Jeu.personnages[0].setPosition(256, 763);
+		Jeu.personnages[1].setPosition(256 + 512, 763);
+		
+		if(NumeroJoueur == 0)
+		{
+			Jeu.balle.setPosition(256, 200);
+		}
+		else
+		{
+			Jeu.balle.setPosition(256 + 512, 200);
+		}
+	}
 }

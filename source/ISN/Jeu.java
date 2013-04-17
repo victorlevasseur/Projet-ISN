@@ -14,13 +14,13 @@ import org.jsfml.window.event.Event;
 
 public class Jeu {
 	
-	//Mettre ici toutes les variables qui doivent être conservée tout au long de l'exécution
+	//Mettre ici toutes les variables qui doivent Ãªtre conservÃ©e tout au long de l'exÃ©cution
 	//du jeu (ex : position des perso, vitesse balle...)
 	// -> Il faut mettre public static devant pour qu'elles soient globales
 	//		ex : public static Texture texturePerso1;
 	// -> Il ne faut pas oublier de les initialiser dans la fonction initialisation()
 	//		ex : texturePerso1 = new Texture(); //dans la fonction initialisation()
-	// -> Pour y accéder depuis un autre fichier, il faut les préfixer de "Jeu."
+	// -> Pour y accÃ©der depuis un autre fichier, il faut les prÃ©fixer de "Jeu."
 	//		ex : Jeu.rPerso
 	
 	public static Sprite[] personnages;
@@ -28,6 +28,8 @@ public class Jeu {
 	
 	public static Sprite balle;
 	public static float rBalle;
+	public static int[] scores;
+	public static boolean finPartie;
 	
 	//Pour le moteur physique
 	public static float vitesseX;
@@ -38,11 +40,15 @@ public class Jeu {
 	public static Texture texturePerso1;
 	public static Texture texturePerso2;
 	public static Texture textureBalle;
+	public static Font police;
+	public static Text texte;
+	public static Text texteVictoire;
 
 	public static void main(String[] args) {
 		
 		RenderWindow fenetre = new RenderWindow();
 		fenetre.create(new VideoMode(1024, 768, 32), "Jeu ISN");
+		finPartie = false;
 		
 		Clock clock = new Clock();
 		
@@ -50,16 +56,16 @@ public class Jeu {
 		
 		while(fenetre.isOpen()){
 			
-			//Boucle pour récupérer chaque événement (clic de souris, touche clavier) reçu par la fenêtre
+			//Boucle pour rÃ©cupÃ©rer chaque Ã©vÃ©nement (clic de souris, touche clavier) reÃ§u par la fenÃªtre
 			for(Event event : fenetre.pollEvents()){
 				
-				//event représente l'événement qui sera traité.
-				//event.type donne le type d'événement (clic de souris, clavier...)
-				//Selon le type de l'événement, il faut utiliser event.asBLABLA() pour récupérer les
-				//informations relatives à l'événement (touche du clavier, bouton de souris, position du clic).
+				//event reprÃ©sente l'Ã©vÃ©nement qui sera traitÃ©.
+				//event.type donne le type d'Ã©vÃ©nement (clic de souris, clavier...)
+				//Selon le type de l'Ã©vÃ©nement, il faut utiliser event.asBLABLA() pour rÃ©cupÃ©rer les
+				//informations relatives Ã  l'Ã©vÃ©nement (touche du clavier, bouton de souris, position du clic).
 				
 				if(event.type == Event.Type.CLOSED) {
-		            		//L'utilisateur a décidé de fermer le jeu.
+		            		//L'utilisateur a dÃ©cidÃ© de fermer le jeu.
 		            		fenetre.close();
 		            
 				}
@@ -67,11 +73,17 @@ public class Jeu {
 			
 			fenetre.clear();
 			
-			//Boucle infinie pour gérer le jeu
+			//Boucle infinie pour gÃ©rer le jeu
 			Time dureeFrame = clock.restart();
-			
-			gererJeu(dureeFrame.asSeconds());
-			afficherJeu(fenetre);
+			if (finPartie == false){
+				gererJeu(dureeFrame.asSeconds());
+				afficherJeu(fenetre);
+			}
+			else
+			{
+				texteVictoire.setString("Victoire !\n" + "Joueur " + (Scores.JoueurGagnant() +1 ));
+				fenetre.draw(texteVictoire);
+			}
 			
 			fenetre.display();
 			
@@ -93,6 +105,8 @@ public class Jeu {
 		personnages = new Sprite[2];
 		personnages[0] = new Sprite();
 		personnages[1] = new Sprite();
+		
+		scores = new int[2];
 		
 		personnages[0].setOrigin(rPerso, rPerso);
 		personnages[1].setOrigin(rPerso, rPerso);
@@ -130,22 +144,44 @@ public class Jeu {
 		personnages[0].setTexture(texturePerso1);
 		personnages[1].setTexture(texturePerso2);
 		balle.setTexture(textureBalle);
+		
+		police = new Font();
+		try { 
+			police.loadFromFile(new File("LiquidCrystal-Normal.otf"));
+		} catch(IOException ex) { 
+			ex.printStackTrace(); 
+		}
+		
+		texte = new Text();
+		texte.setFont(police);
+		texte.setString("J1 : 0	J2 : 0");
+		
+		texte.setPosition(10, 10);
+		
+		texteVictoire = new Text();
+		texteVictoire.setFont(police);
+		texteVictoire.setCharacterSize(200);
+		texteVictoire.setString("Victoire !");
+		
+		texteVictoire.setPosition(140, 200);
 	}
 	
 	public static void gererJeu(float dureeFrame){
 		Mouvements.deplacements(dureeFrame);
 		Physique.gererPhysique(dureeFrame);
-		//Ici, on gérera le jeu (mouvements des persos, menu, collisions...)
+		//Ici, on gÃ©rera le jeu (mouvements des persos, menu, collisions...)
 		
 	}
 	
 	public static void afficherJeu(RenderWindow fenetre){
-		//Ici, on gérera l'affichage du jeu (dessin des persos...)
+		//Ici, on gÃ©rera l'affichage du jeu (dessin des persos...)
 		AffichageTerrain.afficherterrain(fenetre);
 		
 		fenetre.draw(personnages[0]);
 		fenetre.draw(personnages[1]);
 		fenetre.draw(balle);
+		
+		fenetre.draw(texte);
 	}
 
 }
